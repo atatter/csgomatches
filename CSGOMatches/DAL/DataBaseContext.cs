@@ -4,6 +4,7 @@ using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Domain;
 
 namespace DAL
 {
@@ -13,5 +14,7 @@ namespace DAL
         {
             Database.SetInitializer(new DropCreateDatabaseIfModelChanges<DataBaseContext>());
         }
+
+        public DbSet<Team> Teams { get; set; }
     }
 }
