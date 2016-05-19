@@ -6,7 +6,14 @@ using System.Threading.Tasks;
 
 namespace Domain
 {
-    class Comment
+    public class Comment
     {
+        public int CommentId { get; set; }
+        public int UserId { get; set; }
+        public string CommentText { get; set; }
+        public DateTime Created { get; set; }
+
+        public int MatchId { get; set; }
+        public virtual Match Match { get; set; }
     }
 }

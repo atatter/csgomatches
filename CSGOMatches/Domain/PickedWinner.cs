@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace Domain
 {
-    class PickedWinner
+    public class PickedWinner
     {
+        public int PickedWinnerId { get; set; }
     }
 }
