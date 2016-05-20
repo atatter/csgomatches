@@ -1,6 +1,10 @@
-﻿angular.module("matchesapp.controllers", [])
+﻿angular.module("Home")
     .controller("homeController",
-        function ($scope, usersService) {
+        function ($scope, usersService, $location) {
+
+            if (usersService.isAuth) {
+                $location.path('/login');
+            }
 
             console.log("HomeController initialized");
 
@@ -26,16 +30,16 @@
             //    sessionStorage.setItem('accessToken', resp.access_token);
             //});
 
-            usersService.getUserInfo().then(function (resp) {
+           
+                usersService.getUserInfo().then(function (resp) {
 
                 $scope.user = resp.data.email;
 
-            });
-
-            usersService.getValues()
-                .then(function(resp) {
-                    $scope.values = resp.data;
                 });
 
+            $scope.logout = function () {
+                sessionStorage.removeItem('accessToken');
+                $location.path('/login');
+            }
 
         });

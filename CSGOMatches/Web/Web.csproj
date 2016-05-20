@@ -157,10 +157,15 @@
   <ItemGroup>
     <Content Include="app\app.js" />
     <Content Include="app\controllers\homeController.js" />
+    <Content Include="app\controllers\loginlogoutController.js" />
     <Content Include="app\services\usersService.js" />
     <Content Include="app\services\valuesService.js" />
+    <Content Include="app\views\home.html" />
+    <Content Include="app\views\login.html" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\styles\login.css" />
+    <Content Include="Content\styles\main.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
