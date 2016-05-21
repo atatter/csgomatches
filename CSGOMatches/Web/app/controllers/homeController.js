@@ -1,10 +1,8 @@
 ﻿angular.module("Home")
     .controller("homeController",
-        function ($scope, usersService, $location) {
+        function ($scope, usersService) {
 
-            if (usersService.isAuth) {
-                $location.path('/login');
-            }
+
 
             console.log("HomeController initialized");
 
@@ -39,7 +37,6 @@
 
             $scope.logout = function () {
                 sessionStorage.removeItem('accessToken');
-                $location.path('/login');
             }
 
         });

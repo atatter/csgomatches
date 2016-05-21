@@ -1,6 +1,6 @@
 ﻿angular.module("Authentication")
     .controller("loginlogoutController",
-        function ($scope, usersService, $location) {
+        function ($scope, usersService) {
 
             console.log("LoginLogoutController initialized");
 
@@ -23,8 +23,6 @@
                     console.log(resp.userName);
                     sessionStorage.setItem('accessToken', resp.access_token);
                 });
-
-                $location.path('/');
             }
 
             
