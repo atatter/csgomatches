@@ -8,6 +8,11 @@ namespace Domain
 {
     public class Match
     {
+        public Match()
+        {
+            Created = DateTime.Now;
+        }
+
         public int MatchId { get; set; }
         public DateTime Created { get; set; }
 
@@ -20,7 +25,7 @@ namespace Domain
 
         public virtual List<Comment> Comments { get; set; }
 
-        public virtual List<PickedWinner> PickedWinners { get; set; }
+        public virtual List<PickedWinner> PickedWinner { get; set; }
 
         public virtual List<PickedMVP> PickedMvps { get; set; }
        

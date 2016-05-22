@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace Domain
 {
-    class MapInMatch
+    public class MapInMatch
     {
+        public int MapInMatchId { get; set; }
     }
 }
