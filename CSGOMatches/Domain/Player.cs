@@ -9,5 +9,9 @@ namespace Domain
     public class Player
     {
         public int PlayerId { get; set; }
+        public string Nick { get; set; }
+
+        public virtual List<PlayerInTeam> PlayerInTeams { get; set; }
+        public virtual List<PickedMVP> PickedMvps { get; set; }
     }
 }

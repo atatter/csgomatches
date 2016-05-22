@@ -41,3 +41,12 @@ body {
     box-shadow: gray 0px 2px 10px -3px;
     margin: 0 auto 20px auto;
 }
+
+/* Default box */
+.box-item {
+    width: 98%;
+    height: 180px;
+    background-color: white;
+    box-shadow: gray 0px 2px 10px -3px;
+    margin: 0 auto 20px auto;
+}

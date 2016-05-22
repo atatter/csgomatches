@@ -54,7 +54,6 @@
     <Compile Include="MapInMatch.cs" />
     <Compile Include="Match.cs" />
     <Compile Include="PickedMVP.cs" />
-    <Compile Include="PickedWinner.cs" />
     <Compile Include="Player.cs" />
     <Compile Include="PlayerInTeam.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

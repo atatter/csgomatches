@@ -19,7 +19,6 @@ namespace DAL
         public DbSet<Match> Matches { get; set; }
         public DbSet<Comment> Comments { get; set; }
         public DbSet<PickedMVP> PickedMvps { get; set; }
-        public DbSet<PickedWinner> PickedWinners { get; set; }
         public DbSet<Player> Players { get; set; }
         public DbSet<PlayerInTeam> PlayerInTeams { get; set; }
         public DbSet<Map> Maps { get; set; }

@@ -159,8 +159,10 @@
     <Content Include="app\controllers\homeController.js" />
     <Content Include="app\controllers\loginlogoutController.js" />
     <Content Include="app\services\matchesService.js" />
+    <Content Include="app\services\teamsService.js" />
     <Content Include="app\services\usersService.js" />
     <Content Include="app\services\valuesService.js" />
+    <Content Include="app\views\addteam.html" />
     <Content Include="app\views\home.html" />
     <Content Include="app\views\login.html" />
     <Content Include="Content\bootstrap.css" />

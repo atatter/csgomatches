@@ -1,15 +1,32 @@
 ﻿angular.module("Home")
     .controller("homeController",
-        function ($scope, usersService) {
+        function ($scope, usersService, teamsService, matchesService) {
 
 
+            //var teaminfo = {
+            //    Name: "NiP"
+            //};
+
+            //teamsService.addTeam(teaminfo).success(function(resp) {
+            //    console.log("Team added");
+            //});
+
+            //var matchinfo = {
+            //    TeamOneId: 1,
+            //    TeamTwoId: 2
+            //}
+
+            //matchesService.addMatch(matchinfo)
+            //    .success(function(resp) {
+            //        console.log("Match Added");
+            //    });
 
             console.log("HomeController initialized");
 
             var userinfo = {
-                Email: "alekstattesr@gmail.com",
-                Password: "kammajaa",
-                ConfirmPassword: "kammajaa"
+                Email: "alekstattes@gmail.com",
+                Password: "Kammajaa12#",
+                ConfirmPassword: "Kammajaa12#"
             };
 
             var logininfo = {
@@ -29,14 +46,20 @@
             //});
 
            
-                usersService.getUserInfo().then(function (resp) {
+                //usersService.getUserInfo().then(function (resp) {
 
-                $scope.user = resp.data.email;
+                //$scope.user = resp.data.email;
 
+                //});
+
+            //$scope.logout = function () {
+            //    sessionStorage.removeItem('accessToken');
+            //}
+
+            matchesService.getMatches()
+                .success(function(resp) {
+                    console.log("Matches loaded");
+                    $scope.matches = resp.data;
                 });
-
-            $scope.logout = function () {
-                sessionStorage.removeItem('accessToken');
-            }
 
         });
