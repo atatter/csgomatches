@@ -14,24 +14,24 @@ namespace WebAPI
         public static void Register(HttpConfiguration config)
         {
 
-            //// Web API configuration and services
+            // Web API configuration and services
 
-            //var formatters = config.Formatters;
-            //var jsonFormatter = formatters.JsonFormatter;
+            var formatters = config.Formatters;
+            var jsonFormatter = formatters.JsonFormatter;
 
-            //// remove xml formatter
-            //formatters.Remove(formatters.XmlFormatter);
+            // remove xml formatter
+            formatters.Remove(formatters.XmlFormatter);
 
-            //// json referenceloop
-            //jsonFormatter.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Serialize;
-            //// json referenceloop objects
-            //jsonFormatter.SerializerSettings.PreserveReferencesHandling = PreserveReferencesHandling.Objects;
+            // json referenceloop
+            jsonFormatter.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Serialize;
+            // json referenceloop objects
+            jsonFormatter.SerializerSettings.PreserveReferencesHandling = PreserveReferencesHandling.Objects;
 
-            //// pretty output
-            //jsonFormatter.SerializerSettings.Formatting = Formatting.Indented;
+            // pretty output
+            jsonFormatter.SerializerSettings.Formatting = Formatting.Indented;
 
-            //// response case
-            //jsonFormatter.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
+            // response case
+            jsonFormatter.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
             // Web API configuration and services
             // Configure Web API to use only bearer token authentication.
             config.SuppressDefaultHostAuthentication();

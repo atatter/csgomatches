@@ -9,6 +9,8 @@ using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
 using DAL;
+using DAL.Interfaces;
+using DAL.Repositories;
 using Domain;
 
 namespace WebAPI.Controllers.api
@@ -16,104 +18,19 @@ namespace WebAPI.Controllers.api
     public class TeamsController : ApiController
     {
         private DataBaseContext db = new DataBaseContext();
+        private ITeamRepository _repo;
 
-        // GET: api/Teams
-        public IQueryable<Team> GetTeams()
+        public TeamsController()
         {
-            return db.Teams;
+            _repo = new TeamRepository(db);
         }
 
-        // GET: api/Teams/5
-        [ResponseType(typeof(Team))]
-        public IHttpActionResult GetTeam(int id)
+        // GET api/values
+        public List<Team> Get()
         {
-            Team team = db.Teams.Find(id);
-            if (team == null)
-            {
-                return NotFound();
-            }
-
-            return Ok(team);
+            return _repo.All;
         }
 
-        // PUT: api/Teams/5
-        [ResponseType(typeof(void))]
-        public IHttpActionResult PutTeam(int id, Team team)
-        {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
 
-            if (id != team.TeamId)
-            {
-                return BadRequest();
-            }
-
-            db.Entry(team).State = EntityState.Modified;
-
-            try
-            {
-                db.SaveChanges();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!TeamExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return StatusCode(HttpStatusCode.NoContent);
-        }
-
-        // POST: api/Teams
-        [ResponseType(typeof(Team))]
-        public IHttpActionResult PostTeam(Team team)
-        {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-
-            db.Teams.Add(team);
-            db.SaveChanges();
-
-            return CreatedAtRoute("DefaultApi", new { id = team.TeamId }, team);
-        }
-
-        // DELETE: api/Teams/5
-        [ResponseType(typeof(Team))]
-        public IHttpActionResult DeleteTeam(int id)
-        {
-            Team team = db.Teams.Find(id);
-            if (team == null)
-            {
-                return NotFound();
-            }
-
-            db.Teams.Remove(team);
-            db.SaveChanges();
-
-            return Ok(team);
-        }
-
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                db.Dispose();
-            }
-            base.Dispose(disposing);
-        }
-
-        private bool TeamExists(int id)
-        {
-            return db.Teams.Count(e => e.TeamId == id) > 0;
-        }
     }
 }

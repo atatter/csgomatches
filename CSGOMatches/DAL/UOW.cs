@@ -11,6 +11,7 @@ namespace DAL
 {
     public class UOW : IUOW, IDisposable
     {
+
         private IDbContext DbContext { get; set; }
         protected IEFRepositoryProvider RepositoryProvider { get; set; }
 
@@ -31,10 +32,8 @@ namespace DAL
 
 
         //standard repos
-        //public IEFRepository<Contact> Contacts => GetStandardRepo<Contact>();
-        //public IEFRepository<ContactType> ContactTypes => GetStandardRepo<ContactType>();
-
         public IEFRepository<Team> Teams => GetStandardRepo<Team>();
+        public IEFRepository<Match> Matches => GetStandardRepo<Match>();
 
         // repo with custom methods
         // add it also in EFRepositoryFactories.cs, in method GetCustomFactories

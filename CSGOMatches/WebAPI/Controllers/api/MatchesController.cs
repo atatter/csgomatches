@@ -8,112 +8,140 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
+using BLL.DTO;
+using BLL.Service;
 using DAL;
+using DAL.Interfaces;
+using DAL.Repositories;
 using Domain;
 
 namespace WebAPI.Controllers.api
 {
     public class MatchesController : ApiController
     {
-        private DataBaseContext db = new DataBaseContext();
+        private readonly MatchService _service;
+        private readonly IMatchRepository _repo;
+
+
+        public MatchesController(IMatchRepository repo)
+        {
+            _repo = repo;
+        }
+
+        public MatchesController()
+        {
+            _service = new MatchService();
+        }
 
         // GET: api/Matches
-        public IQueryable<Match> GetMatches()
+        public List<MatchDTO> GetMatches()
         {
-            return db.Matches;
+            return _service.getAllMatches();
         }
 
-        // GET: api/Matches/5
-        [ResponseType(typeof(Match))]
-        public IHttpActionResult GetMatch(int id)
-        {
-            Match match = db.Matches.Find(id);
-            if (match == null)
-            {
-                return NotFound();
-            }
+        //public IHttpActionResult AddVoteToTeamOne(int? id)
+        //{  
+        //    if (_repo.All.Where(x => x.MatchId == id).Count() == null)
+        //    {
+        //        return NotFound();
+        //    }
+          
+        //    Match match = _repo.All.Where(x => x.MatchId == id).FirstOrDefault();
 
-            return Ok(match);
-        }
+        //    return NotFound();
+        //}
 
-        // PUT: api/Matches/5
-        [ResponseType(typeof(void))]
-        public IHttpActionResult PutMatch(int id, Match match)
-        {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
+        //// GET: api/Matches/5
+        //[ResponseType(typeof(Match))]
+        //public IHttpActionResult GetMatch(int id)
+        //{
+        //    Match match = db.Matches.Find(id);
+        //    if (match == null)
+        //    {
+        //        return NotFound();
+        //    }
 
-            if (id != match.MatchId)
-            {
-                return BadRequest();
-            }
+        //    return Ok(match);
+        //}
 
-            db.Entry(match).State = EntityState.Modified;
+        //// PUT: api/Matches/5
+        //[ResponseType(typeof(void))]
+        //public IHttpActionResult PutMatch(int id, Match match)
+        //{
+        //    if (!ModelState.IsValid)
+        //    {
+        //        return BadRequest(ModelState);
+        //    }
 
-            try
-            {
-                db.SaveChanges();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!MatchExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
+        //    if (id != match.MatchId)
+        //    {
+        //        return BadRequest();
+        //    }
 
-            return StatusCode(HttpStatusCode.NoContent);
-        }
+        //    db.Entry(match).State = EntityState.Modified;
 
-        // POST: api/Matches
-        [ResponseType(typeof(Match))]
-        public IHttpActionResult PostMatch(Match match)
-        {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
+        //    try
+        //    {
+        //        db.SaveChanges();
+        //    }
+        //    catch (DbUpdateConcurrencyException)
+        //    {
+        //        if (!MatchExists(id))
+        //        {
+        //            return NotFound();
+        //        }
+        //        else
+        //        {
+        //            throw;
+        //        }
+        //    }
 
-            db.Matches.Add(match);
-            db.SaveChanges();
+        //    return StatusCode(HttpStatusCode.NoContent);
+        //}
 
-            return CreatedAtRoute("DefaultApi", new { id = match.MatchId }, match);
-        }
+        //// POST: api/Matches
+        //[ResponseType(typeof(Match))]
+        //public IHttpActionResult PostMatch(Match match)
+        //{
+        //    if (!ModelState.IsValid)
+        //    {
+        //        return BadRequest(ModelState);
+        //    }
 
-        // DELETE: api/Matches/5
-        [ResponseType(typeof(Match))]
-        public IHttpActionResult DeleteMatch(int id)
-        {
-            Match match = db.Matches.Find(id);
-            if (match == null)
-            {
-                return NotFound();
-            }
+        //    db.Matches.Add(match);
+        //    db.SaveChanges();
 
-            db.Matches.Remove(match);
-            db.SaveChanges();
+        //    return CreatedAtRoute("DefaultApi", new { id = match.MatchId }, match);
+        //}
 
-            return Ok(match);
-        }
+        //// DELETE: api/Matches/5
+        //[ResponseType(typeof(Match))]
+        //public IHttpActionResult DeleteMatch(int id)
+        //{
+        //    Match match = db.Matches.Find(id);
+        //    if (match == null)
+        //    {
+        //        return NotFound();
+        //    }
 
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                db.Dispose();
-            }
-            base.Dispose(disposing);
-        }
+        //    db.Matches.Remove(match);
+        //    db.SaveChanges();
 
-        private bool MatchExists(int id)
-        {
-            return db.Matches.Count(e => e.MatchId == id) > 0;
-        }
+        //    return Ok(match);
+        //}
+
+        //protected override void Dispose(bool disposing)
+        //{
+        //    if (disposing)
+        //    {
+        //        db.Dispose();
+        //    }
+        //    base.Dispose(disposing);
+        //}
+
+        //private bool MatchExists(int id)
+        //{
+        //    return db.Matches.Count(e => e.MatchId == id) > 0;
+        //}
     }
 }

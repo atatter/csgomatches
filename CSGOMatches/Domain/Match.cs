@@ -12,6 +12,8 @@ namespace Domain
         public Match()
         {
             Created = DateTime.Now;
+            TeamOneVotes = 0;
+            TeamTwoVotes = 0;
         }
 
         public int MatchId { get; set; }
@@ -27,6 +29,8 @@ namespace Domain
         [ForeignKey(nameof(TeamTwo))]
         public int? TeamTwoId { get; set; }
         public virtual Team TeamTwo { get; set; }
+
+        public virtual List<MapInMatch> Maps { get; set; }
 
         public virtual List<Comment> Comments { get; set; }
 

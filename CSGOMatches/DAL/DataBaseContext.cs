@@ -4,11 +4,12 @@ using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using DAL.Interfaces;
 using Domain;
 
 namespace DAL
 {
-    public class DataBaseContext : DbContext
+    public class DataBaseContext : DbContext, IDbContext
     {
         public DataBaseContext() : base("name=DBConnectionString")
         {

@@ -59,7 +59,8 @@
             matchesService.getMatches()
                 .success(function(resp) {
                     console.log("Matches loaded");
-                    $scope.matches = resp.data;
+                    console.log(resp);
+                    $scope.matches = resp;
                 });
 
         });

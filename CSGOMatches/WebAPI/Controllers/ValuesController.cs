@@ -4,16 +4,29 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using DAL;
+using DAL.Interfaces;
+using DAL.Repositories;
+using Domain;
 
 namespace WebAPI.Controllers
 {
-    [Authorize]
+    //[Authorize]
     public class ValuesController : ApiController
     {
-        // GET api/values
-        public IEnumerable<string> Get()
+
+        private DataBaseContext db = new DataBaseContext();
+        private ITeamRepository _repo;
+
+        public ValuesController()
         {
-            return new string[] { "value1", "value2" };
+           _repo = new TeamRepository(db);
+        }
+
+        // GET api/values
+        public List<Team> Get()
+        {
+            return _repo.All;
         }
 
         // GET api/values/5
