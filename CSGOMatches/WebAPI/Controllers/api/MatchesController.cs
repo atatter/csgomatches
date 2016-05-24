@@ -26,6 +26,7 @@ namespace WebAPI.Controllers.api
         public MatchesController(IMatchRepository repo)
         {
             _repo = repo;
+            _service = new MatchService();
         }
 
         public MatchesController()
@@ -39,13 +40,26 @@ namespace WebAPI.Controllers.api
             return _service.getAllMatches();
         }
 
+        [ResponseType(typeof(Match))]
+        public IHttpActionResult GetMatch(VoteDTO vote)
+        {            
+            if (vote == null)
+            {
+                return NotFound();
+            }
+
+            
+
+            return Ok(vote);
+        }
+
         //public IHttpActionResult AddVoteToTeamOne(int? id)
         //{  
         //    if (_repo.All.Where(x => x.MatchId == id).Count() == null)
         //    {
         //        return NotFound();
         //    }
-          
+
         //    Match match = _repo.All.Where(x => x.MatchId == id).FirstOrDefault();
 
         //    return NotFound();

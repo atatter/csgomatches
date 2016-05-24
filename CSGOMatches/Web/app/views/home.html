@@ -1,4 +1,12 @@
 ﻿<div class="match-item" ng-repeat="match in matches">
-    {{match.teamOne.name}}, {{match.teamTwo.name}}
+    <div class="team-one-percentage">{{match.teamOnePercentage}}%</div>
+    <div class="match-box-inner">
+        <div class="team-one-name">{{match.teamOneName}}</div>
+        <ul>
+            <li ng-repeat="map in match.maps"></li>
+        </ul>
+        <div class="teams-two-name">{{match.teamTwoName}}</div>
+    </div>
+    <div class="team-two-percentage">{{match.teamTwoPercentage}}%</div>
 </div>
 

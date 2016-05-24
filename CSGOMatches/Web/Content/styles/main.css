@@ -8,11 +8,12 @@ body {
 .container {
     max-width: 1000px;
     margin: 0 auto;
+    position: relative;
 }
 
 /* Header Styles */
 .header {
-    height: 100px;
+    height: 50px;
     width: 100%;
     background-color: #0873d3;
     box-shadow: black 0px 0px 1px 0px;
@@ -20,17 +21,46 @@ body {
 }
 .header h1 {
     margin: 0;
-    text-align: center;
     color: white;
-    line-height: 100px;
+    font-size: 21px;
+    line-height: 50px;
+    margin-left: 30px;
+}
+
+.headername {
+     text-decoration: none;
+}
+
+.header .login-btn {
+    position: absolute;
+    top: -2px;
+    right: 35px;
+    width: 100px;
+    height: 30px;
+    background: white;
+    border-radius: 2px;
+    text-align: center;
+    line-height: 30px;
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: none;
+    color: #090909;
 }
 
 /* Footer styles */
 
 .footer {
-    height: 200px;
+    height: 100px;
     width: 100%;
     background-color: #878787;
+}
+
+.footer h2 {
+    line-height: 100px;
+    text-align: center;
+    color: white;
+    font-size: 16px;
+    margin: 0;
 }
 
 /* Match item styles */
@@ -40,6 +70,143 @@ body {
     background-color: white;
     box-shadow: gray 0px 2px 10px -3px;
     margin: 0 auto 20px auto;
+    transition: 0.2s;
+}
+.match-item .team-one-percentage {
+    height: 180px;
+    float: left;
+    background-color: #34c041;
+    width: 45px;
+    color: white;
+    font-weight: 600;
+    text-align: center;
+    line-height: 180px;
+    transition: 0.2s;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.match-item .team-two-percentage {
+    height: 180px;
+    float: right;
+    width: 45px;
+    background-color:#34c041;
+    color: white;
+    font-weight: 600;
+    text-align: center;
+    line-height: 180px;
+    transition: 0.2s;
+    cursor: pointer;
+}
+
+.match-item .team-two-percentage:hover, .match-item .team-one-percentage:hover {
+    background-color:#3bd84a;
+}
+
+.match-box-inner {
+    display: inline-block;
+    width: calc(100% - 90px);
+    position: relative;
+    height: 180px;
+}
+
+.match-box-inner ul {
+    text-align: center;
+    height: 180px;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    transition: 0.2s;
+}
+
+.match-box-inner ul li {
+    display: inline-block;
+    height: 180px;
+    width: 40px;
+    margin-left: 10px;
+    position: relative;
+    overflow: hidden;
+    transition: 0.2s;
+}
+
+.match-box-inner ul li:before {
+    content: "";
+    position: absolute;
+    width: 619%;
+    height: 226%;
+    top: -68%;
+    left: -50%;
+    z-index: 1;
+    background: url("http://static.hltv.org//images/hotmatch/tba.png") 0;
+    -webkit-transform: rotate(30deg);
+    -moz-transform: rotate(30deg);
+    -ms-transform: rotate(30deg);
+    -o-transform: rotate(30deg);
+    transform: rotate(90deg);
+}
+
+.team-one-name {
+    margin-left: 10px;
+    top: 15px;
+    left: 5px;
+}
+
+.teams-two-name {
+    margin-right: 10px;
+    bottom: 15px;
+    right: 5px;
+}
+
+.team-one-name, .teams-two-name {
+    font-weight: 600;
+    position: absolute;
+    font-size: 24px;
+}
+
+@media(min-width: 600px) {
+    .team-one-name {
+        top: 0px;
+    }
+    .teams-two-name {
+        bottom: 0px;
+    }
+    .team-one-name, .teams-two-name {
+        line-height: 180px;
+        font-size: 24px
+    }
+}
+
+@media(min-width: 600px) and (max-width: 699px) {
+    .team-one-name, .teams-two-name {
+        line-height: 180px;
+        font-size: 16px
+    }
+}
+
+
+@media(max-width: 599px) {
+    .match-box-inner ul {
+        display: none;
+    } 
+
+    .match-item {
+        height: 100px;
+    }
+    .match-item .team-one-percentage, .match-item .team-two-percentage {
+        height: 100px;
+        line-height: 100px;
+    }
+    .match-box-inner {
+        height: 100px;
+    }
+    .match-box-inner ul {
+        height: 100px;
+    }
+
+    .match-box-inner ul li {
+        height: 100px;
+    }
+
 }
 
 /* Default box */

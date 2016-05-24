@@ -2,7 +2,7 @@
     .controller("homeController",
         function ($scope, usersService, teamsService, matchesService) {
 
-
+            $(".footer").css("display", "block");
             //var teaminfo = {
             //    Name: "NiP"
             //};

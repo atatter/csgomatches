@@ -4,7 +4,7 @@
 
             console.log("LoginLogoutController initialized");
 
-            
+            $(".footer").css("display", "none");
 
             //usersService.registerUser(userinfo)
             //    .then(function(resp) {
