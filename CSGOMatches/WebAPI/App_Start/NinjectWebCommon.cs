@@ -1,6 +1,8 @@
+using System.Web.Http;
 using DAL;
 using DAL.Helpers;
 using DAL.Interfaces;
+using Ninject.Web.WebApi;
 
 [assembly: WebActivatorEx.PreApplicationStartMethod(typeof(WebAPI.App_Start.NinjectWebCommon), "Start")]
 [assembly: WebActivatorEx.ApplicationShutdownMethodAttribute(typeof(WebAPI.App_Start.NinjectWebCommon), "Stop")]
@@ -27,6 +29,7 @@ namespace WebAPI.App_Start
             DynamicModuleUtility.RegisterModule(typeof(OnePerRequestHttpModule));
             DynamicModuleUtility.RegisterModule(typeof(NinjectHttpModule));
             bootstrapper.Initialize(CreateKernel);
+            
         }
         
         /// <summary>
@@ -48,8 +51,8 @@ namespace WebAPI.App_Start
             {
                 kernel.Bind<Func<IKernel>>().ToMethod(ctx => () => new Bootstrapper().Kernel);
                 kernel.Bind<IHttpModule>().To<HttpApplicationInitializationHttpModule>();
-
                 RegisterServices(kernel);
+                GlobalConfiguration.Configuration.DependencyResolver = new NinjectDependencyResolver(kernel);
                 return kernel;
             }
             catch

@@ -13,5 +13,12 @@
                 });
             }
 
+            teamsAPI.getTeams = function () {
+                return $http({
+                    method: 'GET',
+                    url: 'http://localhost:10742/api/teams'
+                });
+            }
+
             return teamsAPI;
         });

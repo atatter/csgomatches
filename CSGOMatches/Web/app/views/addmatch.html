@@ -1,0 +1,14 @@
+﻿<div class="match-addedit-box">
+    <form role="form">
+        <select ng-model="TeamOneId" >
+            <option ng-repeat="team in teams" value="{{team.teamId}}">{{team.name}}</option>
+        </select>
+        <select ng-model="TeamTwoId">
+            <option ng-repeat="team in teams" value="{{team.teamId}}">{{team.name}}</option>
+        </select>
+        <select ng-model="Maps" multiple>
+            <option ng-repeat="map in maps" value="{{map.mapId}}">{{map.mapName}}</option>
+        </select>
+        <button ng-click="addMatch()">Lisa</button>
+    </form>
+</div>

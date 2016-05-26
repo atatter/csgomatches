@@ -18,6 +18,8 @@ namespace DAL.Interfaces
         //Standard repos
         IEFRepository<Team> Teams { get;  }
         IEFRepository<Match> Matches { get;  }
+        IEFRepository<Map> Maps { get;  }
+        IEFRepository<MapInMatch> MapInMatches { get;  }
 
         //Cust repos
         //IPersonRepository Persons { get; }

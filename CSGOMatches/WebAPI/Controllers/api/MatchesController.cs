@@ -14,25 +14,22 @@ using DAL;
 using DAL.Interfaces;
 using DAL.Repositories;
 using Domain;
+using WebAPI.Models;
 
 namespace WebAPI.Controllers.api
 {
     public class MatchesController : ApiController
     {
         private readonly MatchService _service;
-        private readonly IMatchRepository _repo;
+        private readonly IUOW _uow;
 
 
-        public MatchesController(IMatchRepository repo)
+        public MatchesController(IUOW uow)
         {
-            _repo = repo;
+            _uow = uow;
             _service = new MatchService();
         }
 
-        public MatchesController()
-        {
-            _service = new MatchService();
-        }
 
         // GET: api/Matches
         public List<MatchDTO> GetMatches()
@@ -40,17 +37,53 @@ namespace WebAPI.Controllers.api
             return _service.getAllMatches();
         }
 
+        // POST: api/Matches
         [ResponseType(typeof(Match))]
-        public IHttpActionResult GetMatch(VoteDTO vote)
-        {            
-            if (vote == null)
+        public IHttpActionResult PostMatch(MatchCreateViewModel vm)
+        {
+            if (!ModelState.IsValid)
             {
-                return NotFound();
+                return BadRequest(ModelState);
             }
 
+            vm.Match = new Match();
             
 
-            return Ok(vote);
+            var team1 = _uow.Teams.GetById(vm.TeamOneId);
+            var team2 = _uow.Teams.GetById(vm.TeamTwoId);
+
+            if (team1 == null || team2 == null)
+            {
+                return BadRequest();
+            }
+            vm.Match.TeamOneId = vm.TeamOneId;
+            vm.Match.TeamTwoId = vm.TeamTwoId;
+
+            _uow.Matches.Add(vm.Match);
+            _uow.Commit();
+
+            var gameMaps = new List<MapInMatch>();
+
+            foreach (var mapId in vm.MapIds)
+            {
+                var map = _uow.Maps.GetById(mapId);
+                if (map == null)
+                {
+                    return BadRequest();
+                }
+
+                gameMaps.Add(new MapInMatch() { MapId = mapId, MatchId = vm.Match.MatchId });
+
+            }
+
+            foreach (var map in gameMaps)
+            {
+                _uow.MapInMatches.Add(map);
+            }
+
+            _uow.Commit();
+
+            return Ok("Done");
         }
 
         //public IHttpActionResult AddVoteToTeamOne(int? id)

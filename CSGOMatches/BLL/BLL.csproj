@@ -54,6 +54,7 @@
     <Compile Include="Factories\MapFactory.cs" />
     <Compile Include="Factories\MatchFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Service\MapService.cs" />
     <Compile Include="Service\MatchService.cs" />
   </ItemGroup>
   <ItemGroup>

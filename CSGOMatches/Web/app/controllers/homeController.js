@@ -56,11 +56,34 @@
             //    sessionStorage.removeItem('accessToken');
             //}
 
-            matchesService.getMatches()
+            var loadMatches = function () {
+                matchesService.getMatches()
                 .success(function(resp) {
                     console.log("Matches loaded");
                     console.log(resp);
                     $scope.matches = resp;
                 });
+            }
 
+            loadMatches();
+
+            $scope.voteForTeamOne = function (match) {
+                var voteinfo = {
+                    MatchId: match.matchId,
+                    VoteForTeamOne: true,
+                    VoteForTeamTwo: false
+                }
+                matchesService.vote(voteinfo);
+                loadMatches();
+            }
+
+            $scope.voteForTeamTwo = function (match) {
+                var voteinfo = {
+                    MatchId: match.matchId,
+                    VoteForTeamOne: false,
+                    VoteForTeamTwo: true
+                }
+                matchesService.vote(voteinfo);
+                loadMatches();
+            }
         });

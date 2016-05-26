@@ -17,12 +17,18 @@ angular.module('app',
                     controller: 'loginlogoutController',
                     templateUrl: 'app/views/login.html'
                 })
+                .when('/addmatch',
+                {
+                    controller: 'matchController',
+                    templateUrl: 'app/views/addmatch.html'
+                })
                 .when('/',
                 {
                     controller: 'homeController',
                     templateUrl: 'app/views/home.html'
                 })
-                .otherwise({ redirectTo: '/' });
+                .otherwise({ redirectTo: '/' }
+                );
 
         }
     ]);

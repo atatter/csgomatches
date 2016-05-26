@@ -108,6 +108,11 @@ body {
     width: calc(100% - 90px);
     position: relative;
     height: 180px;
+    cursor: pointer;
+}
+
+.match-box-inner:hover {
+    background-color: #eaeaea;
 }
 
 .match-box-inner ul {
