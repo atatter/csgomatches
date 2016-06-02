@@ -86,30 +86,19 @@ namespace WebAPI.Controllers.api
             return Ok("Done");
         }
 
-        //public IHttpActionResult AddVoteToTeamOne(int? id)
-        //{  
-        //    if (_repo.All.Where(x => x.MatchId == id).Count() == null)
-        //    {
-        //        return NotFound();
-        //    }
 
-        //    Match match = _repo.All.Where(x => x.MatchId == id).FirstOrDefault();
+        // GET: api/Matches/5
+        [ResponseType(typeof(Match))]
+        public IHttpActionResult GetMatch(int id)
+        {
+            Match match = _uow.Matches.GetById(id);
+            if (match == null)
+            {
+                return NotFound();
+            }
 
-        //    return NotFound();
-        //}
-
-        //// GET: api/Matches/5
-        //[ResponseType(typeof(Match))]
-        //public IHttpActionResult GetMatch(int id)
-        //{
-        //    Match match = db.Matches.Find(id);
-        //    if (match == null)
-        //    {
-        //        return NotFound();
-        //    }
-
-        //    return Ok(match);
-        //}
+            return Ok(match);
+        }
 
         //// PUT: api/Matches/5
         //[ResponseType(typeof(void))]

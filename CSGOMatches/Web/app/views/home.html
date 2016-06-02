@@ -1,6 +1,6 @@
 ﻿<div class="match-item" ng-repeat="match in matches">
     <div class="team-one-percentage" ng-click="voteForTeamOne(match)">{{match.teamOnePercentage}}%</div>
-        <div class="match-box-inner" ng-click="">
+        <div class="match-box-inner" ng-click="goToView(match.matchId)">
             <div class="team-one-name">{{match.teamOneName}}</div>
             <ul>
                 <li ng-repeat="map in match.maps"></li>

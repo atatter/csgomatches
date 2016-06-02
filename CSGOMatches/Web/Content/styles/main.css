@@ -11,6 +11,11 @@ body {
     position: relative;
 }
 
+.box-item h2{
+    text-align: center;
+    padding-top: 30px;
+}
+
 /* Header Styles */
 .header {
     height: 50px;

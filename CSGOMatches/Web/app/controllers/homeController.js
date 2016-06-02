@@ -1,6 +1,6 @@
 ﻿angular.module("Home")
     .controller("homeController",
-        function ($scope, usersService, teamsService, matchesService) {
+        function ($scope, usersService, teamsService, matchesService, $location) {
 
             $(".footer").css("display", "block");
             //var teaminfo = {
@@ -85,5 +85,10 @@
                 }
                 matchesService.vote(voteinfo);
                 loadMatches();
+            }
+
+            $scope.goToView = function(id) {
+                $location.path("/matchview").search({id: id});
+                console.log("id = " + id);
             }
         });

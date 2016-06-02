@@ -21,6 +21,10 @@ angular.module('app',
                 {
                     controller: 'matchController',
                     templateUrl: 'app/views/addmatch.html'
+                }).when('/matchview',
+                {
+                    controller: 'matchviewController',
+                    templateUrl: 'app/views/matchview.html'
                 })
                 .when('/',
                 {

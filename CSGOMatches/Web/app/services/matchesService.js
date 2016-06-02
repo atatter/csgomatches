@@ -28,6 +28,13 @@
             });
             }
             
+            matchesAPI.getMatch = function(id) {
+                return $http({
+                    method: 'GET',
+                    url: 'http://localhost:10742/api/matches/' + id
+                });
+            }
+
             matchesAPI.getMaps = function () {
                 return $http({
                     method: 'GET',
