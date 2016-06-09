@@ -28,4 +28,15 @@
                 $scope.auth = true;
             }
 
+            var userinfo = {
+                Email: "admin@csgomatches.com",
+                Password: "Parool12#",
+                ConfirmPassword: "Parool12#"
+            };
+
+            usersService.registerUser(userinfo)
+                .then(function(resp) {
+                    console.log("Response message: " + resp);
+                });
+
         });
