@@ -2,7 +2,9 @@
     .controller("addeditteamController",
         function ($scope, $location , $routeParams , playersService , teamsService) {
             console.log("AddEditTeamController init");
-
+            if (!$scope.auth) {
+                $location.path("/");
+            }
             var loadPlayers = function() {
                 playersService.getPlayers().success(function(e) {
                     $scope.players = e;

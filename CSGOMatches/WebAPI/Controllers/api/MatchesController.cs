@@ -36,7 +36,7 @@ namespace WebAPI.Controllers.api
         {
             return _service.getAllMatches();
         }
-
+        [Authorize]
         // POST: api/Matches
         [ResponseType(typeof(Match))]
         public IHttpActionResult PostMatch(MatchAddDTO vm)
@@ -61,7 +61,6 @@ namespace WebAPI.Controllers.api
 
             return Ok("Done");
         }
-
 
         // GET: api/Matches/5
         [ResponseType(typeof(Match))]

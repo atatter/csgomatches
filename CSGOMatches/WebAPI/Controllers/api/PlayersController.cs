@@ -8,6 +8,7 @@ using BLL.DTO;
 using BLL.Service;
 using DAL.Interfaces;
 using Domain;
+using WebAPI.Models;
 
 namespace WebAPI.Controllers.api
 {
@@ -34,20 +35,48 @@ namespace WebAPI.Controllers.api
         {
             return "value";
         }
-
+        [Authorize]
         // POST: api/Players
-        public void Post([FromBody]string value)
+        public IHttpActionResult Post(PlayerAddEditViewModel vm)
         {
-        }
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
 
+            _uow.Players.Add(new Player { Nick = vm.Nick });
+            _uow.Commit();
+
+            return Ok();
+        }
+        [Authorize]
         // PUT: api/Players/5
-        public void Put(int id, [FromBody]string value)
+        public IHttpActionResult Put(int id, PlayerAddEditViewModel vm)
         {
-        }
+            var player = _uow.Players.GetById(id);
+            if (player == null)
+            {
+                return BadRequest();
+            }
+            player.Nick = vm.Nick;
+            _uow.Players.Update(player);
+            _uow.Commit();
 
+            return Ok();
+        }
+        [Authorize]
         // DELETE: api/Players/5
-        public void Delete(int id)
+        public IHttpActionResult Delete(int id)
         {
+            if (_uow.Players.GetById(id) == null)
+            {
+                return BadRequest();
+            }
+
+            _uow.Players.Delete(id);
+            _uow.Commit();
+
+            return Ok();
         }
     }
 }

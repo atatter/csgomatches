@@ -38,6 +38,10 @@ angular.module('app',
                 {
                     controller: 'playersController',
                     templateUrl: 'app/views/players.html'
+                }).when('/maps',
+                {
+                    controller: 'mapsController',
+                    templateUrl: 'app/views/maps.html'
                 }).when('/addeditteam',
                 {
                     controller: 'addeditteamController',

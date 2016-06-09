@@ -1,6 +1,9 @@
 ﻿angular.module("Home")
     .controller("matchController",
         function ($scope, usersService, teamsService, matchesService) {
+            if (!$scope.auth) {
+                $location.path("/");
+            }
             console.log("MatchController init");
             $scope.match = {
                 TeamOneId: 0,

@@ -161,6 +161,7 @@
     <Content Include="app\controllers\loginController.js" />
     <Content Include="app\controllers\logoutController.js" />
     <Content Include="app\controllers\mainController.js" />
+    <Content Include="app\controllers\mapsController.js" />
     <Content Include="app\controllers\matchController.js" />
     <Content Include="app\controllers\matchviewController.js" />
     <Content Include="app\controllers\playersController.js" />
@@ -168,6 +169,7 @@
     <Content Include="app\services\baseService.js" />
     <Content Include="app\services\commentService.js" />
     <Content Include="app\services\headerService.js" />
+    <Content Include="app\services\mapsService.js" />
     <Content Include="app\services\matchesService.js" />
     <Content Include="app\services\playersService.js" />
     <Content Include="app\services\teamsService.js" />
@@ -180,6 +182,7 @@
     <Content Include="app\views\home.html" />
     <Content Include="app\views\login.html" />
     <Content Include="app\views\logout.html" />
+    <Content Include="app\views\maps.html" />
     <Content Include="app\views\matchview.html" />
     <Content Include="app\views\players.html" />
     <Content Include="app\views\teamAddEdit.html" />

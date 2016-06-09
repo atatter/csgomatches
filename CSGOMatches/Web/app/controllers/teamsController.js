@@ -2,7 +2,9 @@
     .controller("teamsController",
         function ($scope, $location, teamsService) {
             console.log("TeamsController init");
-
+            if (!$scope.auth) {
+                $location.path("/");
+            }
             var loadTeams = function() {
                 teamsService.getTeams().success(function(resp) {
                     $scope.teams = resp;

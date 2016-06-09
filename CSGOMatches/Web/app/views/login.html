@@ -1,14 +1,16 @@
 ﻿<div class="login-box">
-    <h2>Login</h2>
-    <div class="email-area">
-        <label for="user">Username:</label>
-        <input type="email" ng-model="username" id="user"/>
-    </div>
-    <div class="password-area">
-        <label for="password">Password:</label>
-        <input type="password" ng-model="password" id="password"/>
-    </div>
-    <div class="button-area">
-        <button ng-click="login()" role="button">Login</button>
-    </div>  
+    <form>
+        <h2>Login</h2>
+        <div class="email-area">
+            <label for="user">Username:</label>
+            <input type="email" ng-model="username" id="user" />
+        </div>
+        <div class="password-area">
+            <label for="password">Password:</label>
+            <input type="password" ng-model="password" id="password" />
+        </div>
+        <div class="button-area">
+            <button ng-click="login()" role="submit">Login</button>
+        </div>
+    </form>
 </div>

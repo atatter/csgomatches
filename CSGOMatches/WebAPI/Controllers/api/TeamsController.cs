@@ -45,7 +45,7 @@ namespace WebAPI.Controllers.api
             }
             return Ok(query);
         }
-
+        [Authorize]
         // POST: api/Players
         public IHttpActionResult Post(TeamAddViewModel vm)
         {
@@ -62,7 +62,7 @@ namespace WebAPI.Controllers.api
 
             return Ok();
         }
-
+        [Authorize]
         // PUT: api/Players/5
         public IHttpActionResult Put(int id, TeamAddViewModel vm)
         {
@@ -80,7 +80,7 @@ namespace WebAPI.Controllers.api
 
             return Ok();
         }
-
+        [Authorize]
         // DELETE: api/Players/5
         public IHttpActionResult Delete(int id)
         {
