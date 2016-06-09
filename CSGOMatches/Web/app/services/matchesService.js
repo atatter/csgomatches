@@ -1,7 +1,6 @@
 ﻿angular.module("Home")
     .factory("matchesService",
         function ($http, baseService) {
-            console.log("MatchesService initialized");
 
             var matchesAPI = {};
 

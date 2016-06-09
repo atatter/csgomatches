@@ -1,7 +1,6 @@
 ﻿angular.module("Authentication")
     .factory("headerService",
         function ($http, baseService) {
-            console.log("HeaderService initialized");
 
             var headerAPI = {};
 

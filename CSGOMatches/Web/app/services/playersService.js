@@ -1,7 +1,6 @@
 ﻿angular.module("Home")
     .factory("playersService",
         function ($http, baseService) {
-            console.log("PlayersService initialized");
 
             var playersAPI = {};
 

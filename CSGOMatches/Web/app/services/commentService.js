@@ -1,7 +1,6 @@
 ﻿angular.module("Home")
     .factory("commentService",
         function ($http, baseService) {
-            console.log("MatchesService initialized");
 
             var commentAPI = {};
 

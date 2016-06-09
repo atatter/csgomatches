@@ -1,7 +1,6 @@
 ﻿angular.module("Home")
     .factory("mapsService",
         function ($http, baseService) {
-            console.log("MapsService initialized");
 
             var mapsAPI = {};
 

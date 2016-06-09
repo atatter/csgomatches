@@ -1,7 +1,6 @@
 ﻿angular.module("Authentication")
     .factory("usersService",
         function ($http, baseService) {
-            console.log("UsersService initialized");
 
             var usersAPI = {};
 

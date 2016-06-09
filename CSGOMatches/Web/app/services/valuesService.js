@@ -1,7 +1,6 @@
 ﻿angular.module("matchesapp.services", [])
     .factory("valuesService",
         function() {
-            console.log("ValuesService initialized");
 
             var valuesAPI = {};
 

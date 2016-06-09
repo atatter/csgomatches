@@ -1,0 +1,10 @@
+﻿<h2 style="text-align: center;">Kaardid</h2>
+<ul>
+    <li ng-repeat="map in maps">{{map.mapName}}<button type="button" ng-click="addToEdit(map)">Edit</button><button type="button" ng-click="delete(map.mapId)">Delete</button></li>
+</ul>
+<form>
+    <label for="mapname">Map name</label>
+    <input type="text" id="mapname" ng-model="mapName" />
+    <button type="submit" ng-if="c" ng-click="add()">Add</button>
+    <button type="submit" ng-if="!c" ng-click="edit()">Edit</button>
+</form>

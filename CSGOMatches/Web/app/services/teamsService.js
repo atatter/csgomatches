@@ -1,7 +1,6 @@
 ﻿angular.module("Home")
     .factory("teamsService",
         function ($http, baseService) {
-            console.log("TeamsService initialized");
 
             var teamsAPI = {};
 
