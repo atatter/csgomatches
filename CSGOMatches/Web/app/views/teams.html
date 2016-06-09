@@ -1,0 +1,10 @@
+﻿<div class="teamButtons" style="width: 100%; text-align: center; margin-bottom: 50px;" ng-if="auth">
+    <a href="/#/addeditteam?j=c">Lisa tiim</a>
+</div>
+<ul>
+    <li ng-repeat="team in teams">
+        {{team.name}} <a href="/#/addeditteam?j=e&id={{team.teamId}}">Edit</a><button ng-click="deleteTeam(team.teamId)">Delete</button>
+    </li>
+</ul>
+
+

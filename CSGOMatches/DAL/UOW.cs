@@ -36,6 +36,8 @@ namespace DAL
         public IEFRepository<Match> Matches => GetStandardRepo<Match>();
         public IEFRepository<Map> Maps => GetStandardRepo<Map>();
         public IEFRepository<MapInMatch> MapInMatches => GetStandardRepo<MapInMatch>();
+        public IEFRepository<Comment> Comments => GetStandardRepo<Comment>();
+        public IEFRepository<Player> Players => GetStandardRepo<Player>();
 
         // repo with custom methods
         // add it also in EFRepositoryFactories.cs, in method GetCustomFactories

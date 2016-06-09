@@ -1,18 +1,21 @@
-﻿<div class="header">
-    <div class="container">
-        <a class="headername" href="#/">
-            <h1>CSGO Matches</h1>
-        </a>
-        <a href="#login" class="login-btn">Log in</a>
+﻿<div>
+    <div class="header">
+        <div class="container">
+            <a class="headername" href="#/">
+                <h1>CSGO Matches</h1>
+            </a>
+            <a ng-if="!auth" href="#login" class="login-btn">Log in</a>
+            <a ng-if="auth" ng-click="logout()" class="login-btn">Logout</a>
+        </div>
     </div>
-</div>
-<div class="content">
-    <div class="container">
-        <div ng-view></div>
+    <div class="content">
+        <div class="container">
+            <div ng-view></div>
+        </div>
     </div>
-</div>
-<div class="footer">
-    <h2>CSGOMatches 2016</h2>
-</div>
+    <div class="footer">
+        <h2>CSGOMatches 2016</h2>
+    </div>
 
+</div>
     

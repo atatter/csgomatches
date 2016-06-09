@@ -1,0 +1,8 @@
+﻿<form>
+    <input type="text" ng-model="teamName"/>
+    <select ng-model="playersInTeam" multiple>
+        <option ng-repeat="player in players" value="{{player.playerId}}">{{player.nick}}</option>
+    </select>
+    <button ng-if="c" ng-click="addTeam()">Create</button>
+    <button ng-if="e" ng-click="editTeam()">Edit</button>
+</form>

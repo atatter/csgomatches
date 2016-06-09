@@ -1,6 +1,6 @@
 ﻿angular.module("Home")
     .controller("homeController",
-        function ($scope, usersService, teamsService, matchesService, $location) {
+        function ($scope, teamsService, usersService ,matchesService, $location) {
 
             $(".footer").css("display", "block");
             //var teaminfo = {
@@ -24,7 +24,7 @@
             console.log("HomeController initialized");
 
             var userinfo = {
-                Email: "alekstattes@gmail.com",
+                Email: "alekstattesr@gmail.com",
                 Password: "Kammajaa12#",
                 ConfirmPassword: "Kammajaa12#"
             };
@@ -32,7 +32,7 @@
             var logininfo = {
                 grant_type: 'password',
                 username: "alekstatter@gmail.com",
-                password: "kammajaa"
+                password: "Kammajaa12#"
             };
 
             //usersService.registerUser(userinfo)
@@ -50,24 +50,27 @@
 
                 //$scope.user = resp.data.email;
 
-                //});
+            //});
 
-            //$scope.logout = function () {
-            //    sessionStorage.removeItem('accessToken');
-            //}
 
-            var loadMatches = function () {
+            //$scope.hasAuth = function () {
+            //    var answer = usersService.isAuth();
+            //    console.log("hasAuth answer is: " + answer)
+            //    return answer;
+            //};
+
+            var loadMatches = function() {
                 matchesService.getMatches()
-                .success(function(resp) {
-                    console.log("Matches loaded");
-                    console.log(resp);
-                    $scope.matches = resp;
-                });
-            }
+                    .success(function(resp) {
+                        console.log("Matches loaded");
+                        console.log(resp);
+                        $scope.matches = resp;
+                    });
+            };
 
             loadMatches();
 
-            $scope.voteForTeamOne = function (match) {
+            $scope.voteForTeamOne = function(match) {
                 var voteinfo = {
                     MatchId: match.matchId,
                     VoteForTeamOne: true,
@@ -75,9 +78,9 @@
                 }
                 matchesService.vote(voteinfo);
                 loadMatches();
-            }
+            };
 
-            $scope.voteForTeamTwo = function (match) {
+            $scope.voteForTeamTwo = function(match) {
                 var voteinfo = {
                     MatchId: match.matchId,
                     VoteForTeamOne: false,
@@ -85,10 +88,26 @@
                 }
                 matchesService.vote(voteinfo);
                 loadMatches();
-            }
+            };
 
             $scope.goToView = function(id) {
-                $location.path("/matchview").search({id: id});
+                $location.path("/matchview").search({ id: id });
                 console.log("id = " + id);
-            }
+            };
+
+            //usersService.isAuth();
+
+            $scope.auth = false;
+
+            usersService.getUserInfo().then(function successCallback(response) {
+                $scope.auth = true;
+                console.log($scope.auth);
+            });
+
+
+            console.log($scope.auth);
+
+            loadMatches();
+
+
         });

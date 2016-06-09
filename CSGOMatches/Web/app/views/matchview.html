@@ -1,3 +1,23 @@
-﻿<div class="box-item">
-    <h2>{{match.teamOne.name}} - {{match.teamTwo.name}}</h2>
+﻿
+
+<div class="box-item">
+    <button ng-click="deleteMatch()">Delete</button>
+    <h2>{{match.teamOneName}} - {{match.teamTwoName}}</h2>
+    <h3>Comments</h3>
+    <ul>
+        <li ng-repeat="comment in comments">
+            <h4>{{comment.name}} <button ng-if="auth" ng-click="removeComment(comment.commentId)">Remove</button></h4>
+            <p>{{comment.commentText}}</p>
+        </li>
+    </ul>
+    <div>
+        <form role="form">
+            <input type="text" ng-model="commentName"/>
+            <input type="text" ng-model="commentText"/>
+            <button ng-click="addComment()">Lisa</button>
+        </form>
+    </div>
 </div>
+
+
+

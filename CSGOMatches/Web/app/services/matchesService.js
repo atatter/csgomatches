@@ -1,45 +1,32 @@
 ﻿angular.module("Home")
     .factory("matchesService",
-        function ($http) {
+        function ($http, baseService) {
             console.log("MatchesService initialized");
 
             var matchesAPI = {};
 
-            matchesAPI.addMatch = function(matchinfo) {
-                return $http({
-                    method: 'POST',
-                    url: 'http://localhost:10742/api/matches',
-                    data: matchinfo
-                });
+            matchesAPI.addMatch = function (matchinfo) {
+                return baseService.post('api/matches', matchinfo);
             }
 
-            matchesAPI.vote = function(voteinfo) {
-                return $http({
-                    method: 'POST',
-                    url: 'http://localhost:10742/api/votes',
-                    data: voteinfo
-                });
+            matchesAPI.vote = function (voteinfo) {
+                return baseService.post('api/votes', voteinfo);
             }
 
-            matchesAPI.getMatches = function() {
-                return $http({
-                    method: 'GET',
-                    url: 'http://localhost:10742/api/matches'
-            });
+            matchesAPI.getMatches = function () {
+                return baseService.get('api/matches');
             }
             
-            matchesAPI.getMatch = function(id) {
-                return $http({
-                    method: 'GET',
-                    url: 'http://localhost:10742/api/matches/' + id
-                });
+            matchesAPI.getMatch = function (id) {
+                return baseService.get('api/matches/' + id);
             }
 
             matchesAPI.getMaps = function () {
-                return $http({
-                    method: 'GET',
-                    url: 'http://localhost:10742/api/maps'
-                });
+                return baseService.get('api/maps');
+            }
+
+            matchesAPI.deleteMatch = function(id) {
+                return baseService.delete('api/matches/' + id);
             }
 
             return matchesAPI;

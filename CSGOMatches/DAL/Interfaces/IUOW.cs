@@ -20,6 +20,8 @@ namespace DAL.Interfaces
         IEFRepository<Match> Matches { get;  }
         IEFRepository<Map> Maps { get;  }
         IEFRepository<MapInMatch> MapInMatches { get;  }
+        IEFRepository<Comment> Comments { get;  }
+        IEFRepository<Player> Players { get;  }
 
         //Cust repos
         //IPersonRepository Persons { get; }

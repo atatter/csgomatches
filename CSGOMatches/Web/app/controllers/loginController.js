@@ -1,8 +1,8 @@
 ﻿angular.module("Authentication")
-    .controller("loginlogoutController",
-        function ($scope, usersService) {
+    .controller("loginController",
+        function ($scope, $location, usersService) {
 
-            console.log("LoginLogoutController initialized");
+            console.log("LoginController initialized");
 
 
             //usersService.registerUser(userinfo)
@@ -21,6 +21,8 @@
                 usersService.getAuth(logininfo).success(function (resp) {
                     console.log(resp.userName);
                     sessionStorage.setItem('accessToken', resp.access_token);
+                    $scope.trueAuth();
+                    $location.path("/");
                 });
             }
 

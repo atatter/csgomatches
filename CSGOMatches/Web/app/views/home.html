@@ -1,12 +1,19 @@
-﻿<div class="match-item" ng-repeat="match in matches">
+﻿
+
+<div class="matchAddButtonArea" style="width: 100%; text-align: center; margin-bottom: 50px;" ng-if="auth">
+    <a href="/#/teams">Tiimid</a>
+    <a href="/#/addmatch">Lisa match</a>
+    <a href="/#/players">Mängijad</a>
+</div>
+<div class="match-item" ng-repeat="match in matches">
     <div class="team-one-percentage" ng-click="voteForTeamOne(match)">{{match.teamOnePercentage}}%</div>
-        <div class="match-box-inner" ng-click="goToView(match.matchId)">
-            <div class="team-one-name">{{match.teamOneName}}</div>
-            <ul>
-                <li ng-repeat="map in match.maps"></li>
-            </ul>
-            <div class="teams-two-name">{{match.teamTwoName}}</div>
-        </div>
+    <div class="match-box-inner" ng-click="goToView(match.matchId)">
+        <div class="team-one-name">{{match.teamOneName}}</div>
+        <ul>
+            <li ng-repeat="map in match.maps"></li>
+        </ul>
+        <div class="teams-two-name">{{match.teamTwoName}}</div>
+    </div>
     <div class="team-two-percentage" ng-click="voteForTeamTwo(match)">{{match.teamTwoPercentage}}%</div>
 </div>
 
